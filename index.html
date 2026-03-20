@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌺 沖繩五天四夜 自駕之旅 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+  :root {
+    --ocean: #00A8CC;
+    --ocean-light: #E0F7FA;
+    --coral: #FF6B6B;
+    --coral-light: #FFE8E8;
+    --sand: #FFD93D;
+    --sand-light: #FFF9E6;
+    --mint: #6BCB77;
+    --mint-light: #E8F8EA;
+    --lavender: #C77DFF;
+    --lavender-light: #F3E8FF;
+    --peach: #FF9A3C;
+    --peach-light: #FFF0E0;
+    --white: #FFFFFF;
+    --text: #2D3436;
+    --text-light: #636E72;
+    --bg: #F0FBFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #0093E9 0%, #80D0C7 50%, #43C6AC 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 20px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%23F0FBFF' d='M0,64L48,69.3C96,75,192,85,288,80C384,75,480,53,576,48C672,43,768,53,864,64C960,75,1056,85,1152,80C1248,75,1344,53,1392,42.7L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z'/%3E%3C/svg%3E") no-repeat bottom;
+    background-size: cover;
+  }
+
+  .bubbles {
+    position: absolute;
+    width: 100%; height: 100%;
+    pointer-events: none;
+  }
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    animation: float linear infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) scale(0); opacity: 1; }
+    100% { transform: translateY(-100px) scale(1); opacity: 0; }
+  }
+
+  .hero-emoji {
+    font-size: 5rem;
+    margin-bottom: 16px;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: rgba(255,255,255,0.9);
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+
+  .hero-tags {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .hero-tag {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    padding: 8px 20px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .flight-card {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  .flight-box {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    padding: 20px 28px;
+    color: white;
+    min-width: 220px;
+    text-align: center;
+  }
+
+  .flight-box .label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-bottom: 8px;
+  }
+
+  .flight-box .airline {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .flight-box .route {
+    font-size: 1.4rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .flight-box .times {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin-top: 6px;
+  }
+
+  /* ===== NAV ===== */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 12px 0;
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 0 20px;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    flex-shrink: 0;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: none;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #f0f0f0;
+    color: var(--text-light);
+  }
+
+  .nav-btn:hover, .nav-btn.active {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+
+  .nav-btn[data-day="1"]:hover, .nav-btn[data-day="1"].active { background: var(--ocean); }
+  .nav-btn[data-day="2"]:hover, .nav-btn[data-day="2"].active { background: var(--coral); }
+  .nav-btn[data-day="3"]:hover, .nav-btn[data-day="3"].active { background: var(--mint); }
+  .nav-btn[data-day="4"]:hover, .nav-btn[data-day="4"].active { background: var(--lavender); }
+  .nav-btn[data-day="5"]:hover, .nav-btn[data-day="5"].active { background: var(--peach); }
+
+  /* ===== MAIN ===== */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ===== DAY SECTION ===== */
+  .day-section {
+    margin: 60px 0;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .day-badge {
+    border-radius: 20px;
+    padding: 16px 32px;
+    color: white;
+    font-weight: 900;
+    font-size: 1.6rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    white-space: nowrap;
+  }
+
+  .day-1 .day-badge { background: linear-gradient(135deg, #0093E9, #00C9FF); }
+  .day-2 .day-badge { background: linear-gradient(135deg, #FF6B6B, #FF8E53); }
+  .day-3 .day-badge { background: linear-gradient(135deg, #43C6AC, #6BCB77); }
+  .day-4 .day-badge { background: linear-gradient(135deg, #9B59B6, #C77DFF); }
+  .day-5 .day-badge { background: linear-gradient(135deg, #FF9A3C, #FFD93D); }
+
+  .day-title {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: 800;
+    color: var(--text);
+  }
+
+  .day-date {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .hotel-badge {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    font-weight: 700;
+    color: var(--text);
+    font-size: 0.9rem;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding-left: 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 32px;
+    top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 3px;
+    background: linear-gradient(to bottom, transparent, #e0e0e0, transparent);
+  }
+
+  .day-1 .timeline::before { background: linear-gradient(to bottom, transparent, #00C9FF, transparent); }
+  .day-2 .timeline::before { background: linear-gradient(to bottom, transparent, #FF6B6B, transparent); }
+  .day-3 .timeline::before { background: linear-gradient(to bottom, transparent, #43C6AC, transparent); }
+  .day-4 .timeline::before { background: linear-gradient(to bottom, transparent, #9B59B6, transparent); }
+  .day-5 .timeline::before { background: linear-gradient(to bottom, transparent, #FF9A3C, transparent); }
+
+  .timeline-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .timeline-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    z-index: 1;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    border: 3px solid white;
+  }
+
+  .card {
+    flex: 1;
+    background: white;
+    border-radius: 20px;
+    padding: 20px 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  }
+
+  .card-time {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: white;
+    background: #4285F4;
+    border-radius: 50px;
+    padding: 3px 10px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+  .map-link:hover {
+    background: #1a73e8;
+    transform: scale(1.05);
+  }
+
+  .card-note {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  .card-note .highlight {
+    display: inline-block;
+    background: var(--sand-light);
+    border-left: 3px solid var(--sand);
+    padding: 2px 8px;
+    border-radius: 0 6px 6px 0;
+    margin-top: 4px;
+    font-weight: 600;
+    color: #8B6914;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .tag {
+    border-radius: 50px;
+    padding: 3px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .tag-blue { background: var(--ocean-light); color: var(--ocean); }
+  .tag-red { background: var(--coral-light); color: var(--coral); }
+  .tag-green { background: var(--mint-light); color: #2E7D32; }
+  .tag-yellow { background: var(--sand-light); color: #8B6914; }
+  .tag-purple { background: var(--lavender-light); color: #6A1B9A; }
+  .tag-orange { background: var(--peach-light); color: #BF360C; }
+
+  /* Color variants for day */
+  .day-1 .timeline-icon { background: linear-gradient(135deg, #0093E9, #00C9FF); }
+  .day-1 .card-time { color: var(--ocean); }
+  .day-2 .timeline-icon { background: linear-gradient(135deg, #FF6B6B, #FF8E53); }
+  .day-2 .card-time { color: var(--coral); }
+  .day-3 .timeline-icon { background: linear-gradient(135deg, #43C6AC, #6BCB77); }
+  .day-3 .card-time { color: #2E7D32; }
+  .day-4 .timeline-icon { background: linear-gradient(135deg, #9B59B6, #C77DFF); }
+  .day-4 .card-time { color: var(--lavender); }
+  .day-5 .timeline-icon { background: linear-gradient(135deg, #FF9A3C, #FFD93D); }
+  .day-5 .card-time { color: var(--peach); }
+
+  /* ===== DIVIDER ===== */
+  .wave-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    margin: 0;
+  }
+
+  /* ===== NOTES SECTION ===== */
+  .notes-section {
+    margin: 60px 0;
+    padding: 40px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  }
+
+  .notes-title {
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .note-card {
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .note-card h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .note-card p, .note-card li {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .note-card ul { padding-left: 16px; }
+  .note-card.blue { background: var(--ocean-light); }
+  .note-card.blue h3 { color: var(--ocean); }
+  .note-card.coral { background: var(--coral-light); }
+  .note-card.coral h3 { color: var(--coral); }
+  .note-card.green { background: var(--mint-light); }
+  .note-card.green h3 { color: #2E7D32; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: linear-gradient(135deg, #0093E9, #43C6AC);
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    font-weight: 700;
+  }
+
+  footer .footer-emoji { font-size: 2.5rem; margin-bottom: 12px; }
+  footer p { opacity: 0.9; font-size: 0.95rem; }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== TABLET (≤768px) ===== */
+  @media (max-width: 768px) {
+    .notes-grid {
+      grid-template-columns: 1fr;
+    }
+    .day-header {
+      gap: 12px;
+    }
+    .hotel-badge {
+      margin-left: 0;
+      width: 100%;
+      justify-content: center;
+    }
+    .flight-card {
+      gap: 12px;
+    }
+    .flight-box {
+      min-width: 160px;
+      flex: 1;
+      padding: 16px 16px;
+    }
+  }
+
+  /* ===== MOBILE (≤480px) ===== */
+  @media (max-width: 480px) {
+    /* Hero */
+    .hero {
+      padding: 32px 16px 60px;
+    }
+    .hero-emoji { font-size: 3.5rem; }
+    .hero-tag { font-size: 0.82rem; padding: 6px 14px; }
+    .flight-card { flex-direction: column; align-items: stretch; }
+    .flight-box {
+      min-width: unset;
+      width: 100%;
+      padding: 14px 18px;
+    }
+    .flight-box .route { font-size: 1.2rem; }
+
+    /* Nav */
+    .sticky-nav { padding: 8px 0; }
+    .nav-btn { padding: 7px 14px; font-size: 0.82rem; }
+
+    /* Day header */
+    .day-section { margin: 40px 0; }
+    .day-header { margin-bottom: 24px; }
+    .day-badge { font-size: 1.1rem; padding: 10px 18px; }
+    .day-title { font-size: 1.1rem; }
+    .day-date { font-size: 0.85rem; }
+    .hotel-badge { font-size: 0.82rem; padding: 8px 14px; }
+
+    /* Timeline */
+    .timeline::before { left: 22px; }
+    .timeline-item { gap: 12px; margin-bottom: 16px; }
+    .timeline-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    /* Card */
+    .card { padding: 14px 16px; border-radius: 16px; }
+    .card-title { font-size: 1rem; gap: 6px; }
+    .card-note { font-size: 0.83rem; }
+    .card-time { font-size: 0.75rem; }
+    .map-link { font-size: 0.72rem; padding: 3px 8px; }
+    .tag { font-size: 0.72rem; padding: 2px 10px; }
+    .card-tags { gap: 6px; margin-top: 8px; }
+
+    /* Notes */
+    .notes-section { padding: 20px 16px; margin: 40px 0; border-radius: 20px; }
+    .notes-title { font-size: 1.3rem; }
+    .note-card { padding: 16px; }
+    .note-card h3 { font-size: 0.95rem; }
+    .note-card p, .note-card li { font-size: 0.83rem; }
+
+    /* Container */
+    .container { padding: 0 14px; }
+
+    /* Footer */
+    footer { padding: 32px 16px; }
+    footer .footer-emoji { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="bubbles" id="bubbles"></div>
+  <div class="hero-emoji">🏖️</div>
+  <h1>🌺 沖繩五天四夜</h1>
+  <p class="hero-subtitle">2026年3月21日 ─ 3月25日｜自駕家族旅遊</p>
+  <div class="hero-tags">
+    <span class="hero-tag">✈️ 日本航空</span>
+    <span class="hero-tag">🚗 7人座自駕</span>
+    <span class="hero-tag">👨‍👩‍👧‍👦 親子同遊</span>
+    <span class="hero-tag">🌊 海洋探索</span>
+    <span class="hero-tag">🍡 美食之旅</span>
+  </div>
+
+  <div class="flight-card">
+    <div class="flight-box">
+      <div class="label">✈️ 去程航班</div>
+      <div class="airline">日本航空 NU302</div>
+      <div class="route">臺灣 <span>→</span> 沖繩</div>
+      <div class="times">🛫 10:00 出發 ／ 🛬 12:30 抵達</div>
+    </div>
+    <div class="flight-box">
+      <div class="label">✈️ 回程航班</div>
+      <div class="airline">日本航空 NU301</div>
+      <div class="route">沖繩 <span>→</span> 臺灣</div>
+      <div class="times">🛫 08:00 出發 ／ 🛬 08:45 抵達</div>
+    </div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="sticky-nav">
+  <div class="nav-inner">
+    <button class="nav-btn" data-day="1" onclick="scrollToDay(1)">🌅 DAY 1｜3/21</button>
+    <button class="nav-btn" data-day="2" onclick="scrollToDay(2)">🐋 DAY 2｜3/22</button>
+    <button class="nav-btn" data-day="3" onclick="scrollToDay(3)">🛍️ DAY 3｜3/23</button>
+    <button class="nav-btn" data-day="4" onclick="scrollToDay(4)">🏰 DAY 4｜3/24</button>
+    <button class="nav-btn" data-day="5" onclick="scrollToDay(5)">🏠 DAY 5｜3/25</button>
+    <button class="nav-btn" data-day="6" onclick="scrollToDay(6)">📋 注意事項</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ===== DAY 1 ===== -->
+  <section class="day-section day-1" id="day1">
+    <div class="day-header reveal">
+      <div>
+        <div class="day-badge">DAY 1</div>
+      </div>
+      <div>
+        <div class="day-title">🌅 抵達沖繩・港川外人住宅</div>
+        <div class="day-date">3月21日（六）｜北部→中部</div>
+      </div>
+      <div class="hotel-badge">🏨 BEB5 沖繩瀨良垣</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">✈️</div>
+        <div class="card">
+          <div class="card-time">⏰ 10:00 出發</div>
+          <div class="card-title">日本航空 NU302 起飛</div>
+          <div class="card-note">臺灣出發，飛往沖繩那霸機場</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">約2.5小時</span>
+            <span class="tag tag-green">12:30 抵達</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🚗</div>
+        <div class="card">
+          <div class="card-time">⏰ 14:00</div>
+          <div class="card-title">租車取車</div>
+          <div class="card-note">7人座 × 2台，開始自駕旅程！</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">7人座</span>
+            <span class="tag tag-yellow">自駕</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🍜</div>
+        <div class="card">
+          <div class="card-time">⏰ 15:00</div>
+          <div class="card-title">午餐：鶏そば屋 いしぐふー<a class="map-link" href="https://maps.google.com/?q=鶏そば屋いしぐふー+港川外人住宅+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">
+            港川外人住宅｜雞湯沖繩麵
+            <div class="highlight">☀️ 備案：Cafe & dining Limpid（法式料理）／ COCOROAR CAFE（漢堡排、塔可飯）</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-orange">沖繩麵</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🏘️</div>
+        <div class="card">
+          <div class="card-time">⏰ 15:30</div>
+          <div class="card-title">港川外人住宅區漫步<a class="map-link" href="https://maps.google.com/?q=港川外人住宅+浦添市+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">
+            散步探索美式風格小屋！
+            <br>🍰 oHacorte 港川店 — 招牌水果塔
+            <br>🥐 Houki Boshi — 人氣可麗露
+            <br>🛍️ birthday 港川店採買
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-red">網美打卡</span>
+            <span class="tag tag-yellow">甜點</span>
+            <span class="tag tag-green">採買</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🏨</div>
+        <div class="card">
+          <div class="card-time">⏰ 傍晚</div>
+          <div class="card-title">BEB5 沖繩瀨良垣 Check In<a class="map-link" href="https://maps.google.com/?q=BEB5沖縄瀬良垣" target="_blank">📍 地圖</a></div>
+          <div class="card-note">入住今晚的家！享受海景度假感</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">海景飯店</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🍽️</div>
+        <div class="card">
+          <div class="card-time">⏰ 晚餐</div>
+          <div class="card-title">晚餐：純沖繩料理 三線の花<a class="map-link" href="https://maps.google.com/?q=三線の花+沖縄料理" target="_blank">📍 地圖</a></div>
+          <div class="card-note">
+            道地沖繩料理，感受島嶼風情！
+            <div class="highlight">☀️ 備案：浜の家海鮮料理</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-orange">沖繩料理</span>
+            <span class="tag tag-red">需訂位</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 2 ===== -->
+  <section class="day-section day-2" id="day2">
+    <div class="day-header reveal">
+      <div>
+        <div class="day-badge">DAY 2</div>
+      </div>
+      <div>
+        <div class="day-title">🐋 美麗海水族館・古宇利大橋</div>
+        <div class="day-date">3月22日（日）｜北部</div>
+      </div>
+      <div class="hotel-badge">🏨 BEB5 沖繩瀨良垣</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🌸</div>
+        <div class="card">
+          <div class="card-time">⏰ 08:30</div>
+          <div class="card-title">早餐：Shimamasu & 朝飯<a class="map-link" href="https://www.google.com/maps/search/?api=1&query=3+Chome-20-28+Agarie,+Nago,+Okinawa+905-0021" target="_blank">📍 地圖</a></div>
+          <div class="card-note">元氣滿滿迎接充實的一天！</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🐬</div>
+        <div class="card">
+          <div class="card-time">⏰ 10:30　｜　約 30 分鐘</div>
+          <div class="card-title">海洋博公園｜精彩海豚秀！<a class="map-link" href="https://maps.google.com/?q=海洋博公園+本部町+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">孩子們一定愛！超萌海豚表演</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">KKDAY</span>
+            <span class="tag tag-yellow">大人 NT$447</span>
+            <span class="tag tag-green">小孩 NT$145</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🦈</div>
+        <div class="card">
+          <div class="card-time">⏰ 接續　｜　約 3 小時</div>
+          <div class="card-title">🌊 沖繩美麗海水族館<a class="map-link" href="https://maps.google.com/?q=沖縄美ら海水族館" target="_blank">📍 地圖</a></div>
+          <div class="card-note">全球最大水族館之一！鯨鯊、魟魚近距離相見</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">世界級景點</span>
+            <span class="tag tag-red">必去</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🍱</div>
+        <div class="card">
+          <div class="card-time">⏰ 午餐　｜　約 2 小時</div>
+          <div class="card-title">午餐：INOH</div>
+          <div class="card-note">美麗海水族館 4 樓自助餐，邊吃邊看海！</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">海景餐廳</span>
+            <span class="tag tag-orange">自助餐</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🐳</div>
+        <div class="card">
+          <div class="card-time">⏰ 15:00　｜　約 30 分鐘</div>
+          <div class="card-title">黑潮之海餵食秀</div>
+          <div class="card-note">看鯨鯊張嘴吃魚，孩子的眼睛閃閃發亮！</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">超震撼</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🍤</div>
+        <div class="card">
+          <div class="card-time">⏰ 下午</div>
+          <div class="card-title">正版蝦蝦飯 / 南洋蝦蝦飯<a class="map-link" href="https://maps.google.com/?q=正版蝦蝦飯+沖縄+本部" target="_blank">📍 地圖</a></div>
+          <div class="card-note">沖繩超人氣蝦蝦飯，排隊也值得！</div>
+          <div class="card-tags">
+            <span class="tag tag-orange">人氣小吃</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🌉</div>
+        <div class="card">
+          <div class="card-time">⏰ 16:00 – 18:00　｜　約 2 小時</div>
+          <div class="card-title">古宇利大橋南端停車場 / 觀景台<a class="map-link" href="https://maps.google.com/?q=古宇利大橋+今帰仁村+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">夕陽映照下的神秘大橋，絕美景色！沖繩最浪漫的地方之一</div>
+          <div class="card-tags">
+            <span class="tag tag-red">夕陽景點</span>
+            <span class="tag tag-blue">免費</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🛒</div>
+        <div class="card">
+          <div class="card-time">⏰ 晚上</div>
+          <div class="card-title">超市採購（Option）</div>
+          <div class="card-note">晚餐在 BEB5 房間煎肉🥩，順便買沖繩草莓🍓，輕鬆愜意的晚上！</div>
+          <div class="card-tags">
+            <span class="tag tag-green">輕鬆行程</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 3 ===== -->
+  <section class="day-section day-3" id="day3">
+    <div class="day-header reveal">
+      <div>
+        <div class="day-badge">DAY 3</div>
+      </div>
+      <div>
+        <div class="day-title">🛍️ 萬座毛・AEON・美國村</div>
+        <div class="day-date">3月23日（一）｜中部</div>
+      </div>
+      <div class="hotel-badge">🏨 Hotel GrandConsort Naha</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🍳</div>
+        <div class="card">
+          <div class="card-time">⏰ 早上</div>
+          <div class="card-title">早餐：飯店早餐</div>
+          <div class="card-note">在 BEB5 享用豐盛早餐，準備迎接精彩的一天！</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🌿</div>
+        <div class="card">
+          <div class="card-time">⏰ 上午</div>
+          <div class="card-title">萬座毛<a class="map-link" href="https://maps.google.com/?q=万座毛+恩納村+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">
+            沖繩必看的象鼻岩海岸，海浪打上珊瑚礁岩，壯觀！
+            <br>🌊 恩納海濱公園（Option）
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-green">現場購票</span>
+            <span class="tag tag-yellow">¥100 / 人</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🛍️</div>
+        <div class="card">
+          <div class="card-time">⏰ 下午　｜　3 – 5 小時</div>
+          <div class="card-title">AEON 永旺夢樂城 沖繩來客夢<a class="map-link" href="https://maps.google.com/?q=イオンモール沖縄ライカム" target="_blank">📍 地圖</a></div>
+          <div class="card-note">
+            超大型購物中心，瘋狂購物時間！
+            <br>🍦 Blue Seal 沖繩在地冰淇淋
+            <br>👶 西松屋 — 童裝、用品超划算
+            <br>🧸 阿卡醬 — 嬰幼兒精品
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-green">購物天堂</span>
+            <span class="tag tag-red">必買！</span>
+            <span class="tag tag-blue">親子友善</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🥩</div>
+        <div class="card">
+          <div class="card-time">⏰ 18:00　｜　約 2 小時</div>
+          <div class="card-title">晚餐：Yakiniku RIKIO 燒肉<a class="map-link" href="https://maps.google.com/?q=Yakiniku+RIKIO+北谷+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">已預約 18:00！大口吃燒肉，幸福滿溢！</div>
+          <div class="card-tags">
+            <span class="tag tag-red">已預約✓</span>
+            <span class="tag tag-orange">燒肉</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🌃</div>
+        <div class="card">
+          <div class="card-time">⏰ 20:30</div>
+          <div class="card-title">美國村夜晚散步<a class="map-link" href="https://maps.google.com/?q=美浜アメリカンビレッジ+北谷町+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">熱鬧的夜市氛圍，摩天輪夜景超美！逛街、吃甜點，浪漫夜晚</div>
+          <div class="card-tags">
+            <span class="tag tag-purple">夜景</span>
+            <span class="tag tag-red">打卡熱點</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🏨</div>
+        <div class="card">
+          <div class="card-time">⏰ 晚上</div>
+          <div class="card-title">Hotel GrandConsort Naha Check In<a class="map-link" href="https://maps.google.com/?q=Hotel+Grand+Consort+Naha+那覇" target="_blank">📍 地圖</a></div>
+          <div class="card-note">移往那霸市區飯店！</div>
+          <div class="card-tags">
+            <span class="tag tag-purple">那霸市區</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 4 ===== -->
+  <section class="day-section day-4" id="day4">
+    <div class="day-header reveal">
+      <div>
+        <div class="day-badge">DAY 4</div>
+      </div>
+      <div>
+        <div class="day-title">🏰 牧志市場・瀨長島・首里城</div>
+        <div class="day-date">3月24日（二）｜南部・那霸</div>
+      </div>
+      <div class="hotel-badge">🏨 Hotel GrandConsort Naha</div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🍙</div>
+        <div class="card">
+          <div class="card-time">⏰ 09:00</div>
+          <div class="card-title">早餐：豬肉蛋飯糰本店（牧志店）<a class="map-link" href="https://maps.google.com/?q=ポークたまごおにぎり本店+牧志+那覇" target="_blank">📍 地圖</a></div>
+          <div class="card-note">
+            沖繩超人氣早餐！
+            <div class="highlight">⚠️ 人很多，要早一點去排隊！</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-orange">沖繩必吃</span>
+            <span class="tag tag-red">早去排隊</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🐟</div>
+        <div class="card">
+          <div class="card-time">⏰ 09:00 – 10:00</div>
+          <div class="card-title">第一牧志公設市場<a class="map-link" href="https://maps.google.com/?q=第一牧志公設市場+那覇" target="_blank">📍 地圖</a></div>
+          <div class="card-note">那霸最熱鬧的傳統市場！海鮮、水果、沖繩特產應有盡有</div>
+          <div class="card-tags">
+            <span class="tag tag-orange">傳統市場</span>
+            <span class="tag tag-green">道地文化</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🏝️</div>
+        <div class="card">
+          <div class="card-time">⏰ 10:30</div>
+          <div class="card-title">瀨長島 Umikaji Terrace<a class="map-link" href="https://maps.google.com/?q=瀬長島ウミカジテラス+豊見城市+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">地中海風格的海島商店街，白牆藍天超美！可以看飛機起降</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">海景</span>
+            <span class="tag tag-red">打卡</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🥞</div>
+        <div class="card">
+          <div class="card-time">⏰ 午餐</div>
+          <div class="card-title">午餐：瀨長島 幸福鬆餅</div>
+          <div class="card-note">蓬鬆厚鬆餅，一口幸福感！😍</div>
+          <div class="card-tags">
+            <span class="tag tag-yellow">超人氣甜點</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🚗</div>
+        <div class="card">
+          <div class="card-time">⏰ 13:30</div>
+          <div class="card-title">還車</div>
+          <div class="card-note">自駕旅程圓滿結束！接下來步行或搭乘大眾運輸</div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">📚</div>
+        <div class="card">
+          <div class="card-time">⏰ 下午　｜　1 – 2 小時</div>
+          <div class="card-title">漫畫倉庫 那霸店<a class="map-link" href="https://maps.google.com/?q=まんが倉庫+那覇店+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">日本最大連鎖二手複合商場，挖寶好去處！玩具、漫畫、遊戲機通通有</div>
+          <div class="card-tags">
+            <span class="tag tag-purple">親子必去</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">⛩️</div>
+        <div class="card">
+          <div class="card-time">⏰ 下午　｜　約 30 分鐘</div>
+          <div class="card-title">波上宮<a class="map-link" href="https://maps.google.com/?q=波上宮+那覇+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">沖繩那霸最具代表性的神社！崖邊海景絕美，求個平安旅程</div>
+          <div class="card-tags">
+            <span class="tag tag-orange">神社</span>
+            <span class="tag tag-blue">免費</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🏯</div>
+        <div class="card">
+          <div class="card-time">⏰ 下午　｜　約 2 小時</div>
+          <div class="card-title">首里城<a class="map-link" href="https://maps.google.com/?q=首里城公園+那覇+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">沖繩歷史文化的象徵，世界文化遺產！琉球王國的宏偉城堡</div>
+          <div class="card-tags">
+            <span class="tag tag-red">世界遺產</span>
+            <span class="tag tag-yellow">大人 ¥400</span>
+            <span class="tag tag-green">小學 ¥160</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🐷</div>
+        <div class="card">
+          <div class="card-time">⏰ 17:30</div>
+          <div class="card-title">晚餐：島豚屋 (Shimataburaya) 那霸店<a class="map-link" href="https://maps.google.com/?q=島豚屋+那覇店+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">沖繩名物蒸豬肉！軟嫩多汁，一吃難忘！</div>
+          <div class="card-tags">
+            <span class="tag tag-orange">蒸豬肉</span>
+            <span class="tag tag-red">必吃！</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🛍️</div>
+        <div class="card">
+          <div class="card-time">⏰ 晚上</div>
+          <div class="card-title">國際通逛街 & 最後採買<a class="map-link" href="https://maps.google.com/?q=国際通り+那覇+沖縄" target="_blank">📍 地圖</a></div>
+          <div class="card-note">
+            沖繩最熱鬧的購物大街！最後衝刺採購伴手禮
+            <br>🍟 Calbee+ 專賣店 — 限定薯條三兄弟必買！
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-green">伴手禮</span>
+            <span class="tag tag-yellow">Calbee+</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🍜</div>
+        <div class="card">
+          <div class="card-time">⏰ 宵夜</div>
+          <div class="card-title">宵夜：國際通美食</div>
+          <div class="card-note">
+            🍝 大東麵（道地沖繩麵）
+            <br>🏮 屋台村（室外小吃攤集散地）
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-orange">宵夜</span>
+            <span class="tag tag-purple">必吃</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DAY 5 ===== -->
+  <section class="day-section day-5" id="day5">
+    <div class="day-header reveal">
+      <div>
+        <div class="day-badge">DAY 5</div>
+      </div>
+      <div>
+        <div class="day-title">🏠 依依不捨・返回台灣</div>
+        <div class="day-date">3月25日（三）｜那霸機場</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">🌙</div>
+        <div class="card">
+          <div class="card-time">⏰ 04:30</div>
+          <div class="card-title">前往那霸機場</div>
+          <div class="card-note">
+            Hotel GrandConsort Naha 出發
+            <div class="highlight">🚐 已安排送機：10座車 + 兩個兒童座椅｜¥16,000</div>
+            <div class="highlight">⚠️ 五點前到達機場報到（預留3小時）</div>
+            <div class="highlight">🎫 已收台幣訂金 $2,000</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-orange">已安排送機</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">☕</div>
+        <div class="card">
+          <div class="card-time">⏰ 機場等候</div>
+          <div class="card-title">早餐：便利商店</div>
+          <div class="card-note">
+            <div class="highlight">💡 前一天在便利商店買好早餐！機場店家大多 7:00 才開門</div>
+          </div>
+          <div class="card-tags">
+            <span class="tag tag-yellow">記得提前準備</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-icon">✈️</div>
+        <div class="card">
+          <div class="card-time">⏰ 08:00</div>
+          <div class="card-title">日本航空 NU301 起飛 — 返家！</div>
+          <div class="card-note">沖繩再見！帶著滿滿回憶和戰利品，開心回台灣！</div>
+          <div class="card-tags">
+            <span class="tag tag-blue">08:45 抵達台灣</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOTES ===== -->
+  <section class="notes-section reveal" id="day6">
+    <div class="notes-title">📋 旅遊小幫手</div>
+    <div class="notes-grid">
+
+      <div class="note-card blue">
+        <h3>🚗 自駕必知規則</h3>
+        <ul>
+          <li>🔄 靠左行駛，方向盤在右側</li>
+          <li>📄 需同時攜帶<strong>台灣駕照 + 國際駕照（IDP）</strong>正本</li>
+          <li>🍺 <strong>零容忍酒駕</strong>：血液酒精 0.03% 即違法（比台灣嚴），罰款數十萬日圓＋刑事追訴，乘客也可能連坐</li>
+          <li>📵 行駛中嚴禁使用手機，罰款 ¥18,000 起，可能吊照</li>
+          <li>🚶 斑馬線前<strong>一定讓行人先過</strong></li>
+          <li>🚨 聽到緊急車輛鳴笛，即使綠燈也需靠邊停車讓行</li>
+          <li>🟡 黃色實線：禁止超車；白色虛線：可安全變道</li>
+          <li>🏫 學校、醫院周邊「ゾーン30」限速 30 km/h</li>
+          <li>⚡ 測速照相<strong>不閃光燈</strong>，很難察覺！郊區限 60、高速限 80–100 km/h</li>
+        </ul>
+      </div>
+
+      <div class="note-card coral">
+        <h3>🚙 租車取還車須知</h3>
+        <ul>
+          <li>🚌 機場<strong>無法直接取車</strong>，需在入境大廳搭租車公司接送巴士，預留 30–60 分鐘</li>
+          <li>📋 準備：台灣駕照、國際駕照、護照、預約單、信用卡（押金用）</li>
+          <li>🛡️ 強烈建議加購 <strong>NOC 免責險</strong>（停駛損失費 ¥20,000–¥50,000）及 CDW 碰撞損失免責（約 ¥500–¥1,500/天）</li>
+          <li>📷 <strong>取車時仔細拍下車身四周</strong>，與工作人員確認刮痕記錄在交車單</li>
+          <li>⛽ 確認油種：レギュラー（普通汽油）/ ハイオク（高級）/ 軽油（柴油），加錯自負</li>
+          <li>🛣️ 高速公路無 ETC 需準備<strong>現金繳費</strong>，或另租 ETC 車載器（約 ¥300–500/天）</li>
+          <li>🔋 還車前務必<strong>加滿油</strong>，否則被收高額補油費</li>
+        </ul>
+      </div>
+
+      <div class="note-card" style="background:#FFF3E0;">
+        <h3 style="color:#E65100;">🅿️ 停車費用與注意事項</h3>
+        <ul>
+          <li>🚫 勿停「<strong>月極駐車場</strong>」（月租型，非計時收費）</li>
+          <li>🟡 黃色虛線：可臨時停車（不得熄火）；黃色實線：完全禁止</li>
+          <li>⏱️ 路邊投幣停車場（コインパーキング）：鐵板鎖車，繳費後降下才能離場</li>
+          <li>💡 繳費後通常只有 <strong>10–15 分鐘寬限</strong>離場，超過需再繳</li>
+          <li>🏖️ 美麗海水族館、海洋博公園停車<strong>免費</strong></li>
+          <li>🚗 國際通市區停車費貴，建議停外圍再步行</li>
+          <li>🏪 便利商店停車場僅供購物用，長停可能被貼單</li>
+          <li>📱 停車場查詢 App：<strong>PPPark（駐車場検索）</strong></li>
+        </ul>
+      </div>
+
+      <div class="note-card" style="background:#E8F5E9;">
+        <h3 style="color:#1B5E20;">⛽ 加油站使用教學</h3>
+        <ul>
+          <li>🔵 セルフ（自助）較便宜；フル（全服務）工作人員幫加，稍貴</li>
+          <li>📝 全服務直接說：<strong>「レギュラー満タンお願いします」</strong>（普通汽油加滿）</li>
+          <li>自助步驟：① 選油種 ② 選付款 ③ 選「<strong>満タン</strong>」(加滿) ④ 插油槍加油</li>
+          <li>💴 沖繩油價約 ¥170–190/公升（略貴於本州）</li>
+          <li>💳 部分加油站<strong>不接受外國信用卡</strong>，建議備現金</li>
+          <li>📍 確認油箱在左側或右側，自助加油需停對方向</li>
+        </ul>
+      </div>
+
+      <div class="note-card" style="background:#F3E5F5;">
+        <h3 style="color:#4A148C;">🗺️ 導航小技巧</h3>
+        <ul>
+          <li>📍 建議用<strong>電話號碼</strong>或 <strong>Mapcode</strong> 導航，地址導航沖繩有時不準</li>
+          <li>🚗 推薦：<strong>Yahoo!カーナビ</strong>（日本本地開發，道路資訊最準，免費）</li>
+          <li>🗺️ Google Maps 出發前下載<strong>沖繩離線地圖</strong>，沒網路也能導航</li>
+          <li>🛣️ 沖繩只有一條高速（沖繩自動車道），從那霸到名護</li>
+          <li>🔄 那霸市區（國際通周邊）<strong>單行道複雜</strong>，導航切汽車模式</li>
+        </ul>
+      </div>
+
+      <div class="note-card green">
+        <h3>🛍️ 退稅詳細流程</h3>
+        <ul>
+          <li>💴 門檻：同一店家同日消費滿 <strong>¥5,000（稅前）</strong></li>
+          <li>📋 結帳時出示護照，直接以<strong>免稅價格結帳</strong>（無需事後辦理）</li>
+          <li>🔵 藍色 Tax Free 店：單店累積；🟠 橘色 Tax Free 店：1F 集中退稅台多店累積</li>
+          <li>🍱 退稅消耗品（食品、化妝品）需<strong>密封包裝</strong>，不可在日本境內開封，違規補稅</li>
+          <li>⚠️ <strong>2026 年退稅制度可能改革</strong>（改為出境時在機場退稅），出發前請確認最新政策！</li>
+        </ul>
+      </div>
+
+      <div class="note-card" style="background:#E0F7FA;">
+        <h3 style="color:#006064;">📱 實用 App 推薦</h3>
+        <ul>
+          <li>🗺️ <strong>Yahoo!カーナビ</strong> — 日本最準自駕導航（免費）</li>
+          <li>🅿️ <strong>PPPark</strong> — 停車場搜尋，顯示費率</li>
+          <li>💳 <strong>PayPay</strong> — 日本最普及行動支付，可綁外國信用卡，停車場、餐廳都能用</li>
+          <li>🌐 <strong>Google 翻譯</strong> — 相機即時翻譯日文菜單、告示牌</li>
+          <li>🍽️ <strong>食べログ（Tabelog）</strong> — 日本最大餐廳評價平台</li>
+          <li>🚃 <strong>NAVITIME for Japan</strong> — 那霸單軌電車路線規劃，有中文</li>
+          <li>🌀 <strong>ウェザーニュース</strong> — 最準確天氣 App，颱風即時資訊</li>
+          <li>🍎 iPhone 用戶可綁定 <strong>Apple Pay Suica</strong>，搭單軌電車、便利商店超方便</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-emoji">🌺</div>
+  <p>2026年3月21日 – 3月25日｜五天四夜 沖繩自駕家族之旅</p>
+  <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.7;">一路平安・旅途愉快・滿載而歸 ✨</p>
+</footer>
+
+<script>
+  // Bubble animation
+  const bubblesContainer = document.getElementById('bubbles');
+  for (let i = 0; i < 15; i++) {
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+    const size = Math.random() * 60 + 20;
+    bubble.style.cssText = `
+      width: ${size}px; height: ${size}px;
+      left: ${Math.random() * 100}%;
+      animation-duration: ${Math.random() * 8 + 6}s;
+      animation-delay: ${Math.random() * 5}s;
+    `;
+    bubblesContainer.appendChild(bubble);
+  }
+
+  // ── Scroll reveal ───────────────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav: scroll to section ──────────────────────────────────────
+  const navBtns = document.querySelectorAll('.nav-btn');
+  const NAV_HEIGHT = () => document.querySelector('.sticky-nav').offsetHeight;
+
+  function scrollToDay(day) {
+    const id = day === 6 ? 'day6' : `day${day}`;
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT() - 16;
+    window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  // ── Nav: highlight active section on scroll ─────────────────────
+  const SECTION_IDS = ['day1','day2','day3','day4','day5','day6'];
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = SECTION_IDS.indexOf(entry.target.id);
+        navBtns.forEach(btn => btn.classList.remove('active'));
+        if (idx >= 0) navBtns[idx].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  SECTION_IDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) sectionObserver.observe(el);
+  });
+
+  // ── Auto-scroll to today's day on load ─────────────────────────
+  (function autoScrollToToday() {
+    const tripDays = [
+      { date: '2026-03-21', day: 1 },
+      { date: '2026-03-22', day: 2 },
+      { date: '2026-03-23', day: 3 },
+      { date: '2026-03-24', day: 4 },
+      { date: '2026-03-25', day: 5 },
+    ];
+    const todayStr = new Date().toLocaleDateString('sv-SE');
+    const matched = tripDays.find(d => d.date === todayStr);
+    if (matched) {
+      setTimeout(() => scrollToDay(matched.day), 500);
+    }
+  })();
+</script>
+</body>
+</html>
